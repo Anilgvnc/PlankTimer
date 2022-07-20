@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/startButton"
+        app:layout_constraintBottom_toBottomOf="@+id/controllerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startButton" />
+        app:layout_constraintTop_toBottomOf="@+id/controllerButton" />
 
     <TextView
         android:id="@+id/timerTextView"
@@ -49,17 +49,17 @@
         android:gravity="center"
         android:text="00:00"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintBottom_toTopOf="@+id/controllerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/startButton"
+        android:id="@+id/controllerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="247dp"
-        android:onClick="startButton"
+        android:onClick="controllerButton"
         android:text="Go!"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"

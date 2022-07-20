@@ -6,41 +6,60 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     SeekBar timerSeekBar;
     TextView timerTextView;
+    boolean counterIsActive = false;
+    Button controllerButton;
+    CountDownTimer countDownTimer;
+
+    public void resetTimer(){
+        controllerButton.setText("Go!");
+        timerSeekBar.setProgress(0);
+        countDownTimer.cancel();
+        timerTextView.setText("0:00");
+        timerSeekBar.setEnabled(true);
+        counterIsActive = false;
+    }
 
     public void updateTimer(int timesLeft){
-        int minutes = (timesLeft / 60);
+        int minutes = (int)timesLeft / 60;
         int seconds = timesLeft - minutes * 60;
         String secondString = Integer.toString(seconds);
 
          if(seconds <= 9 ){
             secondString = "0" + secondString;
         }
-        timerTextView.setText(Integer.toString(minutes) + ":" + secondString);
+        timerTextView.setText(minutes + ":" + secondString);
     }
 
-    public void startButton(View view){
-        MediaPlayer startEffect = MediaPlayer.create(this, R.raw.wrong);
-        startEffect.start();
-        new CountDownTimer(timerSeekBar.getProgress() * 1000 + 100, 1000) {
-            @Override
-            public void onTick(long l) {
-                updateTimer((int)(l / 1000));
+    public void controllerButton(View view){
+        if(counterIsActive == false) {
+            counterIsActive = true;
+            timerSeekBar.setEnabled(false);
+            controllerButton.setText("Stop");
+            countDownTimer = new CountDownTimer(timerSeekBar.getProgress() * 1000 + 100, 1000) {
+                @Override
+                public void onTick(long l) {
+                    updateTimer((int) l / 1000);
 
-            }
+                }
 
-            @Override
-            public void onFinish() {
-                timerTextView.setText("0:00");
-                MediaPlayer finishEffect = MediaPlayer.create(getApplicationContext(), R.raw.correct);
-                finishEffect.start();
-            }
-        }.start();
+                @Override
+                public void onFinish() {
+                    resetTimer();
+                    MediaPlayer finishEffect = MediaPlayer.create(getApplicationContext(), R.raw.correct);
+                    finishEffect.start();
+                }
+            }.start();
+        }
+        else{
+            resetTimer();
+        }
     }
 
     @Override
@@ -48,8 +67,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        timerSeekBar = (SeekBar) findViewById(R.id.seekBar);
-        timerTextView = (TextView) findViewById(R.id.timerTextView);
+        timerSeekBar = findViewById(R.id.seekBar);
+        timerTextView = findViewById(R.id.timerTextView);
+        controllerButton = findViewById(R.id.controllerButton);
 
         timerSeekBar.setMax(90);
         timerSeekBar.setProgress(0);
