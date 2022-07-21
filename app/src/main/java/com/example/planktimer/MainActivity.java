@@ -19,12 +19,14 @@ public class MainActivity extends AppCompatActivity {
     CountDownTimer countDownTimer;
     ImageView plankImage;
     Button hideButton;
+    Button showButton;
     boolean ImageIsHide = false;
 
     public void hideImg(View view){
         if(ImageIsHide == false){
             plankImage.setVisibility(View.INVISIBLE);
             hideButton.setVisibility(View.INVISIBLE);
+            showButton.setVisibility(View.VISIBLE);
             ImageIsHide = true;
         }
     }
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         if(ImageIsHide == true){
             plankImage.setVisibility(View.VISIBLE);
             hideButton.setVisibility(View.VISIBLE);
+            showButton.setVisibility(View.INVISIBLE);
             ImageIsHide = false;
         }
     }
@@ -93,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
         controllerButton = findViewById(R.id.controllerButton);
         plankImage = (ImageView) findViewById(R.id.plankImage);
         hideButton = findViewById(R.id.hideButton);
+        showButton = findViewById(R.id.showButton);
+
+        showButton.setVisibility(View.INVISIBLE);
 
         timerSeekBar.setMax(90);
         timerSeekBar.setProgress(0);
