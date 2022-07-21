@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/plankImage"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="174dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
         android:layout_width="253dp"
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="58dp"
         app:layout_constraintBottom_toBottomOf="@+id/controllerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,40 +30,65 @@
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="101dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/controllerButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="94dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="218dp"
-        android:layout_marginBottom="61dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="50dp"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="00:00"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/controllerButton"
+        app:layout_constraintBottom_toBottomOf="@+id/timerImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/plankImage" />
 
     <Button
         android:id="@+id/controllerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="247dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="7dp"
         android:onClick="controllerButton"
         android:text="Go!"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerTextView" />
+        app:layout_constraintBottom_toTopOf="@+id/showButton"
+        app:layout_constraintStart_toEndOf="@+id/showButton" />
+
+    <Button
+        android:id="@+id/hideButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:backgroundTint="#FF0000"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:onClick="hideImg"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:icon="@android:drawable/ic_menu_close_clear_cancel"
+        app:iconGravity="start"
+        app:iconSize="25dp"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/plankImage"
+        app:layout_constraintTop_toBottomOf="@+id/timerImage" />
+
+    <Button
+        android:id="@+id/showButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="199dp"
+        android:backgroundTint="#FDBD5D"
+        android:onClick="showIng"
+        android:text="Exercise plan"
+        app:layout_constraintStart_toStartOf="@+id/plankImage"
+        app:layout_constraintTop_toTopOf="@+id/plankImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

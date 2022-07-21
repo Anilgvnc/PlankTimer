@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -16,6 +17,26 @@ public class MainActivity extends AppCompatActivity {
     boolean counterIsActive = false;
     Button controllerButton;
     CountDownTimer countDownTimer;
+    ImageView plankImage;
+    Button hideButton;
+    boolean ImageIsHide = false;
+
+    public void hideImg(View view){
+        if(ImageIsHide == false){
+            plankImage.setVisibility(View.INVISIBLE);
+            hideButton.setVisibility(View.INVISIBLE);
+            ImageIsHide = true;
+        }
+    }
+
+    public void showIng(View view){
+        if(ImageIsHide == true){
+            plankImage.setVisibility(View.VISIBLE);
+            hideButton.setVisibility(View.VISIBLE);
+            ImageIsHide = false;
+        }
+    }
+
 
     public void resetTimer(){
         controllerButton.setText("Go!");
@@ -70,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         timerSeekBar = findViewById(R.id.seekBar);
         timerTextView = findViewById(R.id.timerTextView);
         controllerButton = findViewById(R.id.controllerButton);
+        plankImage = (ImageView) findViewById(R.id.plankImage);
+        hideButton = findViewById(R.id.hideButton);
 
         timerSeekBar.setMax(90);
         timerSeekBar.setProgress(0);
@@ -77,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         timerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
                 updateTimer(progress);
             }
 
